@@ -1,3 +1,10 @@
+/*
+CS 1027B – Assignment 2
+Name: Felix Ma
+Student Number: 251413859
+Email: fma56@uwo.ca
+Created: February 21, 2025
+*/
 
 public class Reefer extends TrainCar{
 	//Private instance variable
@@ -20,6 +27,7 @@ public class Reefer extends TrainCar{
 	}
 
 	//String representation
+	@Override
 	public String toString() {
 		return "<"+this.getFreight()+", "+this.getWeight()+", "+this.getTemp()+"C>";
 	}
