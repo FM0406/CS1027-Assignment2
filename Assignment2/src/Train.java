@@ -35,7 +35,7 @@ public class Train {
 			//Create newNode to add
 			DoubleNode<TrainCar> newNode = new DoubleNode<>(car);
 			//If can't connect throw TrainException
-			if(!caboose.getElement().canConnect(car)) {
+			if(!(caboose.getElement().canConnect(car))) {
 				throw new TrainException(car+" could not be added.");
 			}else {
 				caboose.setNext(newNode); //Set current caboose to point forward to newNode
@@ -75,15 +75,18 @@ public class Train {
 					}
 				}
 				//Case 2:Last car
-				if(current == caboose) {
+				else if(current == caboose) {
 					caboose = caboose.getPrevious();
 					caboose.setNext(null);
 				}
 				//Case 3: Middle of locomotive and removing it would not affect the connection
-				if(current.getNext() != null && current.getPrevious() != null && current.getPrevious().getElement().canConnect(current.getNext().getElement())) {
-					current.getPrevious().setNext(current.getNext());
-					current.getNext().setPrevious(current.getPrevious());
-				}
+				else {
+	                if (!current.getPrevious().getElement().canConnect(current.getNext().getElement())) {
+	                    throw new TrainException(car+" could not be removed.");
+	                }
+	                current.getPrevious().setNext(current.getNext());
+	                current.getNext().setPrevious(current.getPrevious());
+	            }
 				
 				return;
 			}

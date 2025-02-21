@@ -52,16 +52,24 @@ public class Reefer extends TrainCar{
 	//Determine whether identical
 	@Override
 	public boolean equals(TrainCar other) {
-		//Both reefer and equal based on TrainCar's equal and same temp
-		if(super.equals(other)) {
-			if(other instanceof Reefer) {
-				Reefer otherReefer = (Reefer) other; 
-				if(this.getTemp() == otherReefer.getTemp()) {
-					return true;
-				}
-			}
+		//Same object
+		if(this == other) {
+			return true; 
 		}
-		return false;
+		//Not equal based on TrainCar's Equal
+		if(!(super.equals(other))) {
+			return false;
+		}
+		//Reefer and same temp
+		if(super.equals(other) && other.getClass() == getClass() && other instanceof Reefer) {
+			Reefer otherReefer = (Reefer)other;
+			if(otherReefer.getTemp() == this.getTemp()) {
+				return true;
+			}
+		}else {
+			return false;
+		}
+		return false;	
 	}
 	
 	
