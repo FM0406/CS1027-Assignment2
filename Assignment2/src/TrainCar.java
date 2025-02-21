@@ -28,7 +28,7 @@ public class TrainCar {
 	
 	//String representation
 	public String toString() {
-		return "<"+this.freight+", "+this.weight+">";
+		return "<"+this.getFreight()+", "+this.getWeight()+">";
 	}
 	
 	//Determine whether can connect
